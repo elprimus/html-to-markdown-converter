@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Primeiro Titulo</title>
+	<meta name="generator" content="LibreOffice 7.4.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2024-05-12T15:15:28.432670346"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm }
+		h3.western { font-family: "Liberation Sans", sans-serif }
+		h2.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt }
+		h2.cjk { font-size: 16pt }
+		h2.ctl { font-size: 16pt }
+		h1.western { font-family: "Liberation Sans", sans-serif; font-size: 18pt }
+		h1.cjk { font-size: 18pt }
+		h1.ctl { font-size: 18pt }
+	</style>
+</head>
+<body lang="pt-BR" dir="ltr"><h1 class="western">Primeiro Titulo</h1>
+<p>O primeiro titulo tem como base trazer a possibilidade de validar
+a conversão do arquivo PDF em Markdown.</p>
+<h2 class="western" style="page-break-before: always"><a name="__RefHeading___Toc107_4000630474"></a>
+Bloco de código</h2>
+<p>Abaixo será apresentado um bloco de código.</p>
+<pre lang="zxx" style="font-style: normal; font-weight: normal; background: #282a36; text-decoration: none"><font color="#000000"><span style="background: transparent"><font color="#ff79c6">import</font><font color="#f8f8f2"> argparse</font></span></font>
+<font color="#000000"><span lang="zxx"><span style="background: transparent"><font color="#ff79c6">import</font><font color="#f8f8f2"> html2text</font></span></span></font>
+
+<font color="#000000"><span lang="zxx"><span style="background: transparent"><font color="#ff79c6">class</font><font color="#f8f8f2"> </font><font color="#50fa7b">HTMLToMarkdownConverter</font><font color="#f8f8f2">:</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    </font><span lang="zxx"><font color="#ff79c6">def</font><font color="#f8f8f2"> </font><font color="#50fa7b">__init__</font><font color="#f8f8f2">(</font><font color="#f8f8f2"><i>self</i></font><font color="#f8f8f2">):</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        </font><span lang="zxx"><font color="#f8f8f2"><i>self</i></font><font color="#ff79c6">.</font><font color="#f8f8f2">converter </font><font color="#ff79c6">=</font><font color="#f8f8f2"> html2text</font><font color="#ff79c6">.</font><font color="#f8f8f2">HTML2Text()</font></span></span></font>
+
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    </font><span lang="zxx"><font color="#ff79c6">def</font><font color="#f8f8f2"> </font><font color="#50fa7b">convert</font><font color="#f8f8f2">(</font><font color="#f8f8f2"><i>self</i></font><font color="#f8f8f2">, html_content):</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        <span lang="zxx">markdown_content </font><font color="#ff79c6">=</font><font color="#f8f8f2"> </font><font color="#f8f8f2"><i>self</i></font><font color="#ff79c6">.</font><font color="#f8f8f2">converter</font><font color="#ff79c6">.</font><font color="#f8f8f2">handle(html_content)</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        </font><span lang="zxx"><font color="#ff79c6">return</font><font color="#f8f8f2"> markdown_content</font></span></span></font>
+
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    </font><span lang="zxx"><font color="#ff79c6">def</font><font color="#f8f8f2"> </font><font color="#50fa7b">convert_file</font><font color="#f8f8f2">(</font><font color="#f8f8f2"><i>self</i></font><font color="#f8f8f2">, html_file_path):</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        </font><span lang="zxx"><font color="#ff79c6">with</font><font color="#f8f8f2"> </font><font color="#8be9fd"><i>open</i></font><font color="#f8f8f2">(html_file_path, </font><font color="#bd93f9">'r'</font><font color="#f8f8f2">, encoding</font><font color="#ff79c6">=</font><font color="#bd93f9">'utf-8'</font><font color="#f8f8f2">) </font><font color="#ff79c6">as</font><font color="#f8f8f2"> file:</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">            <span lang="zxx">html_content </font><font color="#ff79c6">=</font><font color="#f8f8f2"> file</font><font color="#ff79c6">.</font><font color="#f8f8f2">read()</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        <span lang="zxx">markdown_content </font><font color="#ff79c6">=</font><font color="#f8f8f2"> </font><font color="#f8f8f2"><i>self</i></font><font color="#ff79c6">.</font><font color="#f8f8f2">convert(html_content)</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        </font><span lang="zxx"><font color="#ff79c6">return</font><font color="#f8f8f2"> markdown_content</font></span></span></font>
+
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    </font><span lang="zxx"><font color="#ff79c6">def</font><font color="#f8f8f2"> </font><font color="#50fa7b">save_as_markdown</font><font color="#f8f8f2">(</font><font color="#f8f8f2"><i>self</i></font><font color="#f8f8f2">, markdown_content, markdown_file_path):</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">        </font><span lang="zxx"><font color="#ff79c6">with</font><font color="#f8f8f2"> </font><font color="#8be9fd"><i>open</i></font><font color="#f8f8f2">(markdown_file_path, </font><font color="#bd93f9">'w'</font><font color="#f8f8f2">, encoding</font><font color="#ff79c6">=</font><font color="#bd93f9">'utf-8'</font><font color="#f8f8f2">) </font><font color="#ff79c6">as</font><font color="#f8f8f2"> file:</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">            <span lang="zxx">file</font><font color="#ff79c6">.</font><font color="#f8f8f2">write(markdown_content)</font></span></span></font>
+
+<font color="#000000"><span lang="zxx"><span style="background: transparent"><font color="#ff79c6">def</font><font color="#f8f8f2"> </font><font color="#50fa7b">main</font><font color="#f8f8f2">():</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">parser </font><font color="#ff79c6">=</font><font color="#f8f8f2"> argparse</font><font color="#ff79c6">.</font><font color="#f8f8f2">ArgumentParser(description</font><font color="#ff79c6">=</font><font color="#bd93f9">'Convert HTML to Markdown'</font><font color="#f8f8f2">)</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">parser</font><font color="#ff79c6">.</font><font color="#f8f8f2">add_argument(</font><font color="#bd93f9">'html_file'</font><font color="#f8f8f2">, help</font><font color="#ff79c6">=</font><font color="#bd93f9">'Path to the HTML file'</font><font color="#f8f8f2">)</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">parser</font><font color="#ff79c6">.</font><font color="#f8f8f2">add_argument(</font><font color="#bd93f9">'markdown_file'</font><font color="#f8f8f2">, help</font><font color="#ff79c6">=</font><font color="#bd93f9">'Path to write the Markdown file'</font><font color="#f8f8f2">)</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">args </font><font color="#ff79c6">=</font><font color="#f8f8f2"> parser</font><font color="#ff79c6">.</font><font color="#f8f8f2">parse_args()</font></span></span></font>
+
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">converter </font><font color="#ff79c6">=</font><font color="#f8f8f2"> HTMLToMarkdownConverter()</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">markdown_output </font><font color="#ff79c6">=</font><font color="#f8f8f2"> converter</font><font color="#ff79c6">.</font><font color="#f8f8f2">convert_file(args</font><font color="#ff79c6">.</font><font color="#f8f8f2">html_file)</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    </font><span lang="zxx"><font color="#8be9fd"><i>print</i></font><font color="#f8f8f2">(markdown_output)</font></span></span></font>
+
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    </font><span lang="zxx"><font color="#6272a4"># Salvar como arquivo Markdown</font></span></span></font>
+<font color="#000000"><span style="background: transparent"><font color="#f8f8f2">    <span lang="zxx">converter</font><font color="#ff79c6">.</font><font color="#f8f8f2">save_as_markdown(markdown_output, args</font><font color="#ff79c6">.</font><font color="#f8f8f2">markdown_file)</font></span></span></font>
+
+<font color="#000000"><span lang="zxx"><span style="background: transparent"><font color="#ff79c6">if</font><font color="#f8f8f2"> </font><font color="#8be9fd"><i>__name__</i></font><font color="#f8f8f2"> </font><font color="#ff79c6">==</font><font color="#f8f8f2"> </font><font color="#bd93f9">&quot;__main__&quot;</font><font color="#f8f8f2">:</font></span></span></font>
+<font color="#f8f8f2"><span style="background: transparent">    <span lang="zxx">main()</span></span></font>
+</pre><h2 class="western">
+<a name="__RefHeading___Toc109_4000630474"></a>Imagem</h2>
+<p>Neste campo iremos apresentar uma imagem e verificar o seu
+resultado convertido.</p>
+<p><img src="novo-exemplo1_html_1a88f2fbe26cc4e4.png" name="Figura1" align="left" width="528" height="255" border="0"/>
+<br/>
+<br/>
+
+</p>
+<h2 class="western"><a name="__RefHeading___Toc111_4000630474"></a>Estrutura
+de Tópicos</h2>
+<p>Apresentando estrutura de tópicos.</p>
+<h3 class="western"><a name="__RefHeading___Toc113_4000630474"></a>Marcadores</h3>
+<ul>
+	<li><p>Opção 1</p>
+	<li><p>Opção 2</p>
+	<li><p>Opção 3</p>
+</ul>
+<h3 class="western"><a name="__RefHeading___Toc115_4000630474"></a>Numeros</h3>
+<ol>
+	<li><p>Primeiro</p>
+	<li><p>Segundo</p>
+	<li><p>Terceiro</p>
+	<ol>
+		<li><p>Primeiro do Terceiro</p>
+		<li><p>Segundo do Terceiro</p>
+		<ol>
+			<li><p>Primeiro do Segundo do Terceiro</p>
+		</ol>
+	</ol>
+	<li><p>Quarto</p>
+</ol>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+</body>
+</html>
